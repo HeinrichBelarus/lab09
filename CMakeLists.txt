@@ -1,54 +1,34 @@
 cmake_minimum_required(VERSION 3.4)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-option(BUILD_EXAMPLES "Build examples" OFF)
+include("cmake/HunterGate.cmake")
+set(HUNTER_ROOT "~/hunter_download/hunter-0.23.314")
+include("cmake/HunterGate.cmake")
+HunterGate(
+    URL "file:///home/michel/hunter_download/v0.23.314.tar.gz"
+    SHA1 "572541b3a9e2c1ccb0c0e552f6dc12219c0d6a0b"
+)
 
 project(print)
-set(PRINT_VERSION_MAJOR 0)
-set(PRINT_VERSION_MINOR 1)
-set(PRINT_VERSION_PATCH 0)
-set(PRINT_VERSION_TWEAK 0)
-set(PRINT_VERSION
-  ${PRINT_VERSION_MAJOR}.${PRINT_VERSION_MINOR}.${PRINT_VERSION_PATCH}.${PRINT_VERSION_TWEAK})
-set(PRINT_VERSION_STRING "v${PRINT_VERSION}")
 
-add_library(print STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp)
+option(BUILD_TESTS "Build tests" OFF)
 
-target_include_directories(print PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>
-)
+hunter_add_package(GTest)
+find_package(GTest REQUIRED)
 
-if(BUILD_EXAMPLES)
-  file(GLOB EXAMPLE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/examples/*.cpp")
-  foreach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
-    get_filename_component(EXAMPLE_NAME ${EXAMPLE_SOURCE} NAME_WE)
-    add_executable(${EXAMPLE_NAME} ${EXAMPLE_SOURCE})
-    target_link_libraries(${EXAMPLE_NAME} print)
-    install(TARGETS ${EXAMPLE_NAME}
-      RUNTIME DESTINATION bin
-    )
-  endforeach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
-endif()
-
-install(TARGETS print
-    EXPORT print-config
-    ARCHIVE DESTINATION lib
-    LIBRARY DESTINATION lib
-)
-
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
-install(EXPORT print-config DESTINATION cmake)
+add_library(print STATIC src/print.cpp)
+target_include_directories(print PUBLIC include)
 
 if(BUILD_TESTS)
-  enable_testing()
-  add_subdirectory(third-party/gtest)
-  file(GLOB ${PROJECT_NAME}_TEST_SOURCES tests/*.cpp)
-  add_executable(check ${${PROJECT_NAME}_TEST_SOURCES})
-  target_link_libraries(check ${PROJECT_NAME} GTest::main)
-  add_test(NAME check COMMAND check)
+    enable_testing()
+    add_executable(check tests/test.cpp)
+    target_link_libraries(check print GTest::GTest GTest::Main)
+    add_test(NAME check COMMAND check)
 endif()
 
-include(CPackConfig.cmake)
+add_executable(demo demo/main.cpp)
+target_link_libraries(demo print)
+install(TARGETS demo RUNTIME DESTINATION bin)
+set(CPACK_PACKAGE_NAME "print")
+set(CPACK_PACKAGE_VERSION "0.1.0.0")
+set(CPACK_PACKAGE_VENDOR "YourName")
+include(CPack)
