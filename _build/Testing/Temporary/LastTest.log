@@ -1,0 +1,19 @@
+Start testing: May 27 00:47 UTC
+----------------------------------------------------------
+Unable to find executable: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
+1/1 Testing: check
+1/1 Test: check
+Command: ""
+Directory: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build
+"check" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"check" end time: May 27 00:47 UTC
+"check" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 27 00:47 UTC

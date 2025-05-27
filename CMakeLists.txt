@@ -4,27 +4,26 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_EXAMPLES "Build examples" OFF)
-option(BUILD_TESTS "Build tests" OFF)
 
 project(print)
 
-add_library(print STATIC /sources/print.cpp)
+add_library(print STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp)
 
 target_include_directories(print PUBLIC
-  $<BUILD_INTERFACE:/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
 if(BUILD_EXAMPLES)
-  file(GLOB EXAMPLE_SOURCES "/examples/*.cpp")
-  foreach(EXAMPLE_SOURCE )
-    get_filename_component(EXAMPLE_NAME  NAME_WE)
-    add_executable( )
-    target_link_libraries( print)
-    install(TARGETS 
+  file(GLOB EXAMPLE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/examples/*.cpp")
+  foreach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
+    get_filename_component(EXAMPLE_NAME ${EXAMPLE_SOURCE} NAME_WE)
+    add_executable(${EXAMPLE_NAME} ${EXAMPLE_SOURCE})
+    target_link_libraries(${EXAMPLE_NAME} print)
+    install(TARGETS ${EXAMPLE_NAME}
       RUNTIME DESTINATION bin
     )
-  endforeach(EXAMPLE_SOURCE )
+  endforeach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
 endif()
 
 install(TARGETS print
@@ -33,7 +32,7 @@ install(TARGETS print
     LIBRARY DESTINATION lib
 )
 
-install(DIRECTORY /include/ DESTINATION include)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
 install(EXPORT print-config DESTINATION cmake)
 
 if(BUILD_TESTS)

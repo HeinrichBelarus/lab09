@@ -1,2 +1,2 @@
-# lab04
+# lab05
 laba4 timp
