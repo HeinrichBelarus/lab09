@@ -11,8 +11,8 @@ drwx------ 5 belarus belarus 4096 May 12 00:00 snap
 drwxr-xr-x 2 belarus belarus 4096 May 11 22:33 Templates
 drwxr-xr-x 2 belarus belarus 4096 May 11 22:33 Videos
 drwxrwxr-x 6 belarus belarus 4096 May 26 01:59 workspace
-belarus@Roblox:~$ cd /lab05
-bash: cd: /lab05: No such file or directory
+belarus@Roblox:~$ cd /lab06
+bash: cd: /lab06: No such file or directory
 belarus@Roblox:~$ export GITHUB_USERNAME=
 belarus@Roblox:~$ export GITHUB_USERNAME=HeinrichBelarus
 belarus@Roblox:~$ alias gsed=sed # for *-nix system
@@ -20,8 +20,8 @@ belarus@Roblox:~$ cd ${GITHUB_USERNAME}/workspace
 belarus@Roblox:~/HeinrichBelarus/workspace$ pushd .
 ~/HeinrichBelarus/workspace ~/HeinrichBelarus/workspace
 belarus@Roblox:~/HeinrichBelarus/workspace$ source scripts/activate
-belarus@Roblox:~/HeinrichBelarus/workspace$ cd projects/lab05
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ ls -l
+belarus@Roblox:~/HeinrichBelarus/workspace$ cd projects/lab06
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ ls -l
 total 36
 drwxrwxr-x 4 belarus belarus 4096 May 27 00:02 _build
 -rw-rw-r-- 1 belarus belarus 1133 May 26 23:56 CMakeLists.txt
@@ -32,23 +32,23 @@ drwxrwxr-x 2 belarus belarus 4096 May 27 00:03 include
 drwxrwxr-x 2 belarus belarus 4096 May 26 23:58 sources
 drwxrwxr-x 2 belarus belarus 4096 May 26 23:56 tests
 drwxrwxr-x 3 belarus belarus 4096 May 26 23:44 third-party
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ ls -l sources
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ ls -l sources
 total 4
 -rw-rw-r-- 1 belarus belarus 172 May 27 00:02 print.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ ls -l include
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ ls -l include
 total 0
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano sources/print.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano include/print.hpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git remote remove origin
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab05
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ mkdir third-party
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano sources/print.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano include/print.hpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git remote remove origin
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab06
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ mkdir third-party
 mkdir: cannot create directory ‘third-party’: File exists
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git submodule add https://github.com/google/googletest third-party/gtest
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git submodule add https://github.com/google/googletest third-party/gtest
 fatal: 'third-party/gtest' already exists in the index
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cd third-party/gtest && git checkout release-1.8.1 && cd ../..
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cd third-party/gtest && git checkout release-1.8.1 && cd ../..
 HEAD is now at 2fe3bd99 Merge pull request #1433 from dsacre/fix-clang-warnings
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git add third-party/gtest
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git commit -m"added gtest framework"
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git add third-party/gtest
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git commit -m"added gtest framework"
 On branch main
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -60,8 +60,8 @@ Untracked files:
 	tests/
 
 nothing added to commit but untracked files present (use "git add" to track)
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git add *
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git commit -m"added gtest framework"
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git add *
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git commit -m"added gtest framework"
 [main 46b7d2c] added gtest framework
  23 files changed, 3260 insertions(+)
  create mode 100644 CMakeLists.txt
@@ -87,10 +87,10 @@ belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git commit -m"added g
  create mode 100644 print.cpp
  create mode 100644 sources/print.cpp
  create mode 100644 tests/test1.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ gsed -i '/option(BUILD_EXAMPLES "Build examples" OFF)/a\
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ gsed -i '/option(BUILD_EXAMPLES "Build examples" OFF)/a\
 option(BUILD_TESTS "Build tests" OFF)
 ' CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat >> CMakeLists.txt <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat >> CMakeLists.txt <<EOF
 
 if(BUILD_TESTS)
   enable_testing()
@@ -101,9 +101,9 @@ if(BUILD_TESTS)
   add_test(NAME check COMMAND check)
 endif()
 EOF
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ mkdir tests
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ mkdir tests
 mkdir: cannot create directory ‘tests’: File exists
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat > tests/test1.cpp <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat > tests/test1.cpp <<EOF
 #include <print.hpp>
 
 #include <gtest/gtest.h>
@@ -124,7 +124,7 @@ TEST(Print, InFileStream)
   EXPECT_EQ(result, text);
 }
 EOF
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake -H. -B_build -DBUILD_TESTS=ON
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake -H. -B_build -DBUILD_TESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -169,12 +169,12 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 CMake Error at CMakeLists.txt:51 (add_subdirectory):
   The binary directory
 
-    /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/third-party/gtest
+    /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/third-party/gtest
 
   is already used to build a source directory.  It cannot be used to build
   source directory
 
-    /home/belarus/HeinrichBelarus/workspace/projects/lab05/third-party/gtest
+    /home/belarus/HeinrichBelarus/workspace/projects/lab06/third-party/gtest
 
   Specify a unique binary directory name.
 
@@ -182,7 +182,7 @@ CMake Error at CMakeLists.txt:51 (add_subdirectory):
 CMake Error at CMakeLists.txt:53 (add_executable):
   add_executable cannot create target "check" because another target with the
   same name already exists.  The existing target is an executable created in
-  source directory "/home/belarus/HeinrichBelarus/workspace/projects/lab05".
+  source directory "/home/belarus/HeinrichBelarus/workspace/projects/lab06".
   See documentation for policy CMP0002 for more details.
 
 
@@ -191,12 +191,12 @@ CMake Error at CMakeLists.txt:55 (add_test):
 
 
 -- Configuring incomplete, errors occurred!
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build
 gmake: Makefile: No such file or directory
 gmake: *** No rule to make target 'Makefile'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ rm -rf _build
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ gsed -i '/if(BUILD_TESTS)/,/endif()/d' CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake -H. -B_build -DBUILD_TESTS=ON
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ rm -rf _build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ gsed -i '/if(BUILD_TESTS)/,/endif()/d' CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake -H. -B_build -DBUILD_TESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -233,11 +233,11 @@ CMake Error at CMakeLists.txt:12 (add_library):
 
 
 CMake Generate step failed.  Build files cannot be regenerated correctly.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano /sources/print.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano sources/print.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano sources/print.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano /sources/print.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ ls -l
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano /sources/print.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano sources/print.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano sources/print.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano /sources/print.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ ls -l
 total 36
 drwxrwxr-x 3 belarus belarus 4096 May 27 00:16 _build
 -rw-rw-r-- 1 belarus belarus  886 May 27 00:15 CMakeLists.txt
@@ -248,11 +248,11 @@ drwxrwxr-x 2 belarus belarus 4096 May 27 00:10 include
 drwxrwxr-x 2 belarus belarus 4096 May 27 00:16 sources
 drwxrwxr-x 2 belarus belarus 4096 May 26 23:56 tests
 drwxrwxr-x 3 belarus belarus 4096 May 26 23:44 third-party
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ ls -l sources
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ ls -l sources
 total 4
 -rw-rw-r-- 1 belarus belarus 172 May 27 00:02 print.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake -H. -B_build -DBUILD_TESTS=ON
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake -H. -B_build -DBUILD_TESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -263,15 +263,15 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ mkdir examples
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ touch examples/example1.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ touch examples/example2.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ ls -l examples
+-- Build files have been written to: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ mkdir examples
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ touch examples/example1.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ touch examples/example2.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ ls -l examples
 total 0
 -rw-rw-r-- 1 belarus belarus 0 May 27 00:21 example1.cpp
 -rw-rw-r-- 1 belarus belarus 0 May 27 00:21 example2.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat > examples/example1.cpp <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat > examples/example1.cpp <<EOF
 #include <print.hpp>
 
 #include <iostream>
@@ -281,7 +281,7 @@ int main(int argc, char** argv) {
    return 0;
 }
 EOF
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat > examples/example2.cpp <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat > examples/example2.cpp <<EOF
 #include <print.hpp>
 #include <fstream>
 
@@ -291,23 +291,23 @@ int main(int argc, char** argv) {
    return 0;
 }
 EOF
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano example1.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano examples/example1.cpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano example1.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano examples/example1.cpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build
 [ 50%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/sources/print.cpp:1:9: fatal error: print.hpp: No such file or directory
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/sources/print.cpp:1:9: fatal error: print.hpp: No such file or directory
     1 | #include<print.hpp>
       |         ^~~~~~~~~~~
 compilation terminated.
 gmake[2]: *** [CMakeFiles/print.dir/build.make:76: CMakeFiles/print.dir/sources/print.cpp.o] Error 1
 gmake[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/print.dir/all] Error 2
 gmake: *** [Makefile:136: all] Error 2
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ ls -l include
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ ls -l include
 total 4
 -rw-rw-r-- 1 belarus belarus 216 May 27 00:10 print.hpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano include/print.hpp
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano include/print.hpp
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -327,9 +327,9 @@ CMake Error in CMakeLists.txt:
 -- Generating done (0.0s)
 CMake Generate step failed.  Build files cannot be regenerated correctly.
 gmake: *** [Makefile:228: cmake_check_build_system] Error 1
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat CMakeLists.txt
 cmake_minimum_required(VERSION 3.4)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -370,8 +370,8 @@ install(DIRECTORY include/ DESTINATION include)
 install(EXPORT print-config DESTINATION cmake)
 
 
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build
 CMake Error at CMakeLists.txt:1 (make_minimum_required):
   Unknown CMake command "make_minimum_required".
 
@@ -388,8 +388,8 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- Configuring incomplete, errors occurred!
 gmake: *** [Makefile:228: cmake_check_build_system] Error 1
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -400,25 +400,25 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build
+-- Build files have been written to: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build
 [ 50%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
 [100%] Linking CXX static library libprint.a
 [100%] Built target print
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 gmake: *** No rule to make target 'test'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 gmake: *** No rule to make target 'test'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 gmake: *** No rule to make target 'test'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 gmake: *** No rule to make target 'test'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 gmake: *** No rule to make target 'test'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake -H. -B_build -DBUILD_ESTS=ON
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake -H. -B_build -DBUILD_ESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -471,7 +471,7 @@ CMake Error at CMakeLists.txt:21 (add_executable):
 
 
 -- Configuring incomplete, errors occurred!
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ $ cat >> CMakeLists.txt <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ $ cat >> CMakeLists.txt <<EOF
 
 if(BUILD_TESTS)
   enable_testing()
@@ -483,7 +483,7 @@ if(BUILD_TESTS)
 endif()
 EOF
 $: command not found
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat >> CMakeLists.txt <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat >> CMakeLists.txt <<EOF
 
 if(BUILD_TESTS)
   enable_testing()
@@ -494,10 +494,10 @@ if(BUILD_TESTS)
   add_test(NAME check COMMAND check)
 endif()
 EOF
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 gmake: *** No rule to make target 'test'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat >> CMakeLists.txt <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat >> CMakeLists.txt <<EOF
 
 if(BUILD_TESTS)
   enable_testing()
@@ -508,9 +508,9 @@ if(BUILD_TESTS)
   add_test(NAME check COMMAND check)
 endif()
 EOF
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 gmake: *** No rule to make target 'test'.  Stop.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake -H. -B_build -DBUILD_TESTS=ON
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake -H. -B_build -DBUILD_TESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -556,7 +556,7 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 CMake Error at CMakeLists.txt:10 (add_library):
   Cannot find source file:
 
-    /home/belarus/HeinrichBelarus/workspace/projects/lab05sources/print.cpp
+    /home/belarus/HeinrichBelarus/workspace/projects/lab06sources/print.cpp
 
   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
   .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
@@ -568,8 +568,8 @@ CMake Error at CMakeLists.txt:10 (add_library):
 
 
 CMake Generate step failed.  Build files cannot be regenerated correctly.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake -H. -B_build -DBUILD_TESTS=ON
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake -H. -B_build -DBUILD_TESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -615,7 +615,7 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 CMake Error at CMakeLists.txt:10 (add_library):
   Cannot find source file:
 
-    /home/belarus/HeinrichBelarus/workspace/projects/lab05sources/print.cpp
+    /home/belarus/HeinrichBelarus/workspace/projects/lab06sources/print.cpp
 
   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
   .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
@@ -627,8 +627,8 @@ CMake Error at CMakeLists.txt:10 (add_library):
 
 
 CMake Generate step failed.  Build files cannot be regenerated correctly.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ nano CMakeLists.txt
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake -H. -B_build -DBUILD_TESTS=ON
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ nano CMakeLists.txt
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake -H. -B_build -DBUILD_TESTS=ON
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.5 will be removed from a future version of
   CMake.
@@ -672,60 +672,60 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build
+-- Build files have been written to: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build
 [ 16%] Built target print
 [ 25%] Building CXX object third-party/gtest/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-In file included from /home/belarus/HeinrichBelarus/workspace/projects/lab05/third-party/gtest/googletest/src/gtest-all.cc:42:
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/third-party/gtest/googletest/src/gtest-death-test.cc: In function ‘bool testing::internal::StackGrowsDown()’:
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/third-party/gtest/googletest/src/gtest-death-test.cc:1224:24: error: ‘dummy’ may be used uninitialized [-Werror=maybe-uninitialized]
+In file included from /home/belarus/HeinrichBelarus/workspace/projects/lab06/third-party/gtest/googletest/src/gtest-all.cc:42:
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/third-party/gtest/googletest/src/gtest-death-test.cc: In function ‘bool testing::internal::StackGrowsDown()’:
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/third-party/gtest/googletest/src/gtest-death-test.cc:1224:24: error: ‘dummy’ may be used uninitialized [-Werror=maybe-uninitialized]
  1224 |   StackLowerThanAddress(&dummy, &result);
       |   ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/third-party/gtest/googletest/src/gtest-death-test.cc:1214:13: note: by argument 1 of type ‘const void*’ to ‘void testing::internal::StackLowerThanAddress(const void*, bool*)’ declared here
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/third-party/gtest/googletest/src/gtest-death-test.cc:1214:13: note: by argument 1 of type ‘const void*’ to ‘void testing::internal::StackLowerThanAddress(const void*, bool*)’ declared here
  1214 | static void StackLowerThanAddress(const void* ptr, bool* result) {
       |             ^~~~~~~~~~~~~~~~~~~~~
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/third-party/gtest/googletest/src/gtest-death-test.cc:1222:7: note: ‘dummy’ declared here
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/third-party/gtest/googletest/src/gtest-death-test.cc:1222:7: note: ‘dummy’ declared here
  1222 |   int dummy;
       |       ^~~~~
 cc1plus: all warnings being treated as errors
 gmake[2]: *** [third-party/gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make:76: third-party/gtest/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o] Error 1
 gmake[1]: *** [CMakeFiles/Makefile2:245: third-party/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all] Error 2
 gmake: *** [Makefile:146: all] Error 2
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test
 Running tests...
-Test project /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build
+Test project /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build
     Start 1: check
-Could not find executable /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
+Could not find executable /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
 Looked in the following places:
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
-Unable to find executable: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
+Unable to find executable: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
 1/1 Test #1: check ............................***Not Run   0.00 sec
 
 0% tests passed, 1 tests failed out of 1
@@ -735,16 +735,16 @@ Total Test time (real) =   0.00 sec
 The following tests FAILED:
 	  1 - check (Not Run)
 Errors while running CTest
-Output from these tests are in: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Testing/Temporary/LastTest.log
+Output from these tests are in: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Testing/Temporary/LastTest.log
 Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
 gmake: *** [Makefile:71: test] Error 8
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ _build/check
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ _build/check
 bash: _build/check: No such file or directory
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cmake --build _build --target test -- ARGS=--verbose
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cmake --build _build --target test -- ARGS=--verbose
 Running tests...
-UpdateCTestConfiguration  from :/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/DartConfiguration.tcl
-UpdateCTestConfiguration  from :/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/DartConfiguration.tcl
-Test project /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build
+UpdateCTestConfiguration  from :/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/DartConfiguration.tcl
+Test project /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build
 Constructing a list of tests
 Done constructing a list of tests
 Updating test list for fixtures
@@ -753,40 +753,40 @@ Checking test dependency graph...
 Checking test dependency graph end
 test 1
     Start 1: check
-Could not find executable /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
+Could not find executable /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
 Looked in the following places:
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
-/home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Release/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Debug/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/MinSizeRel/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/RelWithDebInfo/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Deployment/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
-home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Development/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
+/home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Release/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Debug/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/MinSizeRel/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/RelWithDebInfo/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Deployment/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
+home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Development/check
 
 1: Test command: 
-1: Working Directory: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build
-Unable to find executable: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/check
+1: Working Directory: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build
+Unable to find executable: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/check
 1/1 Test #1: check ............................***Not Run   0.00 sec
 
 0% tests passed, 1 tests failed out of 1
@@ -796,13 +796,13 @@ Total Test time (real) =   0.00 sec
 The following tests FAILED:
 	  1 - check (Not Run)
 Errors while running CTest
-Output from these tests are in: /home/belarus/HeinrichBelarus/workspace/projects/lab05/_build/Testing/Temporary/LastTest.log
+Output from these tests are in: /home/belarus/HeinrichBelarus/workspace/projects/lab06/_build/Testing/Temporary/LastTest.log
 Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
 gmake: *** [Makefile:71: test] Error 8
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ gsed -i 's/lab04/lab05/g' README.md
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ gsed -i 's/\(DCMAKE_INSTALL_PREFIX=_install\)/\1 -DBUILD_TESTS=ON/' .travis.yml
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ gsed -i 's/lab04/lab06/g' README.md
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ gsed -i 's/\(DCMAKE_INSTALL_PREFIX=_install\)/\1 -DBUILD_TESTS=ON/' .travis.yml
 sed: can't read .travis.yml: No such file or directory
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat > .travis.yml <<EOF
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat > .travis.yml <<EOF
 language: cpp
 
 script:
@@ -810,18 +810,18 @@ script:
 - cmake --build _build
 - cmake --build _build --target install
 EOF
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ cat .travis.yml
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ cat .travis.yml
 language: cpp
 
 script:
 - cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install
 - cmake --build _build
 - cmake --build _build --target install
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ gsed -i 's/\(DCMAKE_INSTALL_PREFIX=_install\)/\1 -DBUILD_TESTS=ON/' .travis.yml
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ gsed -i '/cmake --build _build --target install/a\
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ gsed -i 's/\(DCMAKE_INSTALL_PREFIX=_install\)/\1 -DBUILD_TESTS=ON/' .travis.yml
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ gsed -i '/cmake --build _build --target install/a\
 - cmake --build _build --target test -- ARGS=--verbose
 ' .travis.yml
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ travis lint
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ travis lint
 
   ________                                 __
  /        |                               /  |
@@ -848,7 +848,7 @@ belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ travis lint
     There is absolutely no warranty on any results obtained from TRAVIS.
 
  #  Running on Roblox at Tue May 27 00:51:13 2025 (PID 8295)
- #  Running in /home/belarus/HeinrichBelarus/workspace/projects/lab05
+ #  Running in /home/belarus/HeinrichBelarus/workspace/projects/lab06
  #  Version: Jul 29 2022, built at Jan 14 2023, 12:32:45, compiler "12.2.0", GCC 12.2.0
  #  Target platform: Linux, __cplusplus=201703L, Compile flags: NEW_CHARGEVAR DEBUG_ARRAYS 
  #  Compiled with OpenMP, but USE_OMP not switched on in "config.h"!
@@ -916,11 +916,11 @@ Unknown parameter: "lint".
 
 *** The End ***
 
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git add *
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git add tests
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git add -p
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git add *
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git add tests
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git add -p
 No changes.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git commit -m"added tests"
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git commit -m"added tests"
 [main 53755d2] added tests
  106 files changed, 4708 insertions(+), 113 deletions(-)
  create mode 100644 _build/CMakeFiles/CMakeDirectoryInformation.cmake
@@ -1025,27 +1025,27 @@ belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git commit -m"added t
  create mode 100644 examples/example2.cpp
  create mode 100644 input.txt
  create mode 100644 travis.log
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git push origin master
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git push origin master
 error: src refspec master does not match any
-error: failed to push some refs to 'https://github.com/HeinrichBelarus/lab05'
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git push origin main
+error: failed to push some refs to 'https://github.com/HeinrichBelarus/lab06'
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git push origin main
 Username for 'https://github.com': HeinrichBelarus
 Password for 'https://HeinrichBelarus@github.com': 
-To https://github.com/HeinrichBelarus/lab05
+To https://github.com/HeinrichBelarus/lab06
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/HeinrichBelarus/lab05'
+error: failed to push some refs to 'https://github.com/HeinrichBelarus/lab06'
 hint: Updates were rejected because the remote contains work that you do not
 hint: have locally. This is usually caused by another repository pushing to
 hint: the same ref. If you want to integrate the remote changes, use
 hint: 'git pull' before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git pull origin main
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git pull origin main
 remote: Enumerating objects: 4, done.
 remote: Counting objects: 100% (4/4), done.
 remote: Compressing objects: 100% (3/3), done.
 remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 Unpacking objects: 100% (4/4), 1.50 KiB | 1.50 MiB/s, done.
-From https://github.com/HeinrichBelarus/lab05
+From https://github.com/HeinrichBelarus/lab06
  * branch            main       -> FETCH_HEAD
  * [new branch]      main       -> origin/main
 hint: You have divergent branches and need to specify how to reconcile them.
@@ -1061,20 +1061,20 @@ hint: preference for all repositories. You can also pass --rebase, --no-rebase,
 hint: or --ff-only on the command line to override the configured default per
 hint: invocation.
 fatal: Need to specify how to reconcile divergent branches.
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git branch
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git branch
 * main
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git remote show origin
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git remote show origin
 * remote origin
-  Fetch URL: https://github.com/HeinrichBelarus/lab05
-  Push  URL: https://github.com/HeinrichBelarus/lab05
+  Fetch URL: https://github.com/HeinrichBelarus/lab06
+  Push  URL: https://github.com/HeinrichBelarus/lab06
   HEAD branch: main
   Remote branch:
     main tracked
   Local ref configured for 'git push':
     main pushes to main (local out of date)
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git branch
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git branch
 * main
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ git push -f origin main
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ git push -f origin main
 Username for 'https://github.com': HeinrichBelarus
 Password for 'https://HeinrichBelarus@github.com': 
 Enumerating objects: 171, done.
@@ -1084,9 +1084,9 @@ Compressing objects: 100% (141/141), done.
 Writing objects: 100% (171/171), 68.64 KiB | 7.63 MiB/s, done.
 Total 171 (delta 50), reused 4 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (50/50), done.
-To https://github.com/HeinrichBelarus/lab05
+To https://github.com/HeinrichBelarus/lab06
  + 52f64e4...53755d2 main -> main (forced update)
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ travis login --auto
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ travis login --auto
 [Renaming existing File travis.log to #1#travis.log ...OK.]
 
   ________                                 __
@@ -1114,7 +1114,7 @@ belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ travis login --auto
     There is absolutely no warranty on any results obtained from TRAVIS.
 
  #  Running on Roblox at Tue May 27 01:09:38 2025 (PID 8963)
- #  Running in /home/belarus/HeinrichBelarus/workspace/projects/lab05
+ #  Running in /home/belarus/HeinrichBelarus/workspace/projects/lab06
  #  Version: Jul 29 2022, built at Jan 14 2023, 12:32:45, compiler "12.2.0", GCC 12.2.0
  #  Target platform: Linux, __cplusplus=201703L, Compile flags: NEW_CHARGEVAR DEBUG_ARRAYS 
  #  Compiled with OpenMP, but USE_OMP not switched on in "config.h"!
@@ -1183,7 +1183,7 @@ Unknown parameter: "login".
 
 *** The End ***
 
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ travis enable
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ travis enable
 [Renaming existing File travis.log to #2#travis.log ...OK.]
 
   ________                                 __
@@ -1211,7 +1211,7 @@ belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ travis enable
     There is absolutely no warranty on any results obtained from TRAVIS.
 
  #  Running on Roblox at Tue May 27 01:09:46 2025 (PID 8978)
- #  Running in /home/belarus/HeinrichBelarus/workspace/projects/lab05
+ #  Running in /home/belarus/HeinrichBelarus/workspace/projects/lab06
  #  Version: Jul 29 2022, built at Jan 14 2023, 12:32:45, compiler "12.2.0", GCC 12.2.0
  #  Target platform: Linux, __cplusplus=201703L, Compile flags: NEW_CHARGEVAR DEBUG_ARRAYS 
  #  Compiled with OpenMP, but USE_OMP not switched on in "config.h"!
@@ -1280,15 +1280,15 @@ Unknown parameter: "enable".
 
 *** The End ***
 
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ mkdir artifacts
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ sleep 20s && gnome-screenshot --file artifacts/screenshot.png
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ mkdir artifacts
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ sleep 20s && gnome-screenshot --file artifacts/screenshot.png
 Command 'gnome-screenshot' not found, but can be installed with:
 sudo apt install gnome-screenshot
-belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab05$ popd
+belarus@Roblox:~/HeinrichBelarus/workspace/projects/lab06$ popd
 ~/HeinrichBelarus/workspace
 belarus@Roblox:~/HeinrichBelarus/workspace$ export LAB_NUMBER=05
 belarus@Roblox:~/HeinrichBelarus/workspace$ git clone https://github.com/tp-labs/lab${LAB_NUMBER} tasks/lab${LAB_NUMBER}
-Cloning into 'tasks/lab05'...
+Cloning into 'tasks/lab06'...
 remote: Enumerating objects: 137, done.
 remote: Counting objects: 100% (25/25), done.
 remote: Compressing objects: 100% (9/9), done.
@@ -1298,6 +1298,6 @@ Resolving deltas: 100% (60/60), done.
 belarus@Roblox:~/HeinrichBelarus/workspace$ mkdir reports/lab${LAB_NUMBER}
 belarus@Roblox:~/HeinrichBelarus/workspace$ cp tasks/lab${LAB_NUMBER}/README.md reports/lab${LAB_NUMBER}/REPORT.md
 belarus@Roblox:~/HeinrichBelarus/workspace$ cd reports/lab${LAB_NUMBER}
-belarus@Roblox:~/HeinrichBelarus/workspace/reports/lab05$ gist README.md
-Error: No such file or directory @ rb_sysopen - /home/belarus/HeinrichBelarus/workspace/reports/lab05/README.md
-belarus@Roblox:~/HeinrichBelarus/workspace/reports/lab05$ nano README.md
+belarus@Roblox:~/HeinrichBelarus/workspace/reports/lab06$ gist README.md
+Error: No such file or directory @ rb_sysopen - /home/belarus/HeinrichBelarus/workspace/reports/lab06/README.md
+belarus@Roblox:~/HeinrichBelarus/workspace/reports/lab06$ nano README.md
